@@ -1,0 +1,36 @@
+<div class="card bg-success text-white">
+    <form [formGroup]="_form" (ngSubmit)="registrarU(_form.value)">
+        <div class="card-body p-5 text-center">
+
+            <div class="mb-md-5 mt-md-4 pb-5">
+
+                <h2 class="fw-bold mb-2 text-uppercase">Registrarse</h2>
+                <p class="text-white-50 mb-5">Por favor registre un nuevo usuario</p>
+                <div class="form-outline form-white mb-4">
+                    <div class="alert alert-danger" role="alert" *ngIf="_form.get('name')?.touched && _form.get('name')?.errors?.['required'] ">
+                        CAMPO REQUERIDO
+                    </div>
+                    <input type="email" id="typeEmailX" class="form-control form-control-lg" formControlName="name" />
+                    <label class="form-label" for="typeEmailX">Name</label>
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                    <div class="alert alert-danger" role="alert" *ngIf="_form.get('email')?.touched && _form.get('email')?.errors?.['required'] ">
+                        CAMPO REQUERIDO
+                    </div>
+                    <input type="email" id="typeEmailX" class="form-control form-control-lg" formControlName="email" />
+                    <label class="form-label" for="typeEmailX">Email</label>
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                    <div class="alert alert-danger" role="alert" *ngIf="_form.get('password')?.touched && _form.get('password')?.errors?.['required'] ">
+                        CAMPO REQUERIDO
+                    </div>
+                    <input type="password" id="typePasswordX" class="form-control form-control-lg" formControlName="password" />
+                    <label class="form-label" for="typePasswordX">Password</label>
+                </div>
+                <button class="btn btn-outline-dark btn-lg px-5" type="submit">Registro</button>
+            </div>
+        </div>
+    </form>
+</div>

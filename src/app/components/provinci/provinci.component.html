@@ -1,0 +1,76 @@
+<p>provinci works!</p>
+<div class="card bg-success text-white">
+
+    <form [formGroup]="_form">
+
+        <div class="card-body p-8 text-center">
+
+            <div class="mb-md-5 mt-md-4 pb-4">
+
+                <h2 class="fw-bold mb-2 text-uppercase mb-4">Registro de provincias</h2>
+                <div class="form-outline form-white mb-4 mt-5">
+                    <label class="form-label" for="typeEmailX">provincia</label>
+                    <input type="text" id="typeEmailX" class="form-control form-control-lg" formControlName="cantones" />
+
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                    <label class="form-label" for="typeEmailX">Seleccionar una provincia</label>
+                    <select class="form-select" aria-label="Default select example" formControlName="provincia_id">
+              <option *ngFor="let item of tipo" value="{{item.id}}"> {{item.tipo_provincia}} </option>
+            </select>
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                    <label class="form-label" for="typeEmailX">Imagen</label>
+                    <input type="file" name="foto" (change)="obtenerImagen($event)" class="form-control form-control-lg" formControlName="imagen" />
+
+                </div>
+                <div *ngIf="button==true">
+                    <button class="btn btn-outline-light btn-lg px-5" type="registrar" (click)="registro(_form.value)">Guardar</button>
+                </div>
+
+
+            </div>
+        </div>
+    </form>
+
+
+    <table class="table-primary m-5">
+        <thead>
+            <tr class="text-center">
+                <th scope="col">ID</th>
+                <th scope="col">cantones</th>
+                <th scope="col">provincia</th>
+                <th scope="col">Imagen</th>
+                <th scope="col">Acciones</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of animals">
+                <td>{{item.id}}</td>
+                <td>{{item.cantones}}</td>
+                <td>
+                    <div *ngFor="let e of tipo"><b *ngIf="item.provincia_id==e.id">{{e.tipo_provincia}}</b></div>
+                </td>
+                <td><img class="image" width="50" height="50" src="http://127.0.0.1:8000/public/storage/animal/{{item.imagen}}" alt="{{item.logo}}"></td>
+
+
+
+                <!-- <td>{{item.logo}}</td> -->
+                <td>
+                    <div class="g-2">
+                        <button class="btn text-primary btn-sm" (click)="edit(item.id)"> <i class="fa-solid fa-pen-to-square"></i> </button>
+                        <button class="btn text-danger btn-sm" (click)="destroy(item.id)"> <i class="fa-solid fa-trash"></i></button>
+                    </div>
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+
+</div>
